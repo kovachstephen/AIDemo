@@ -1,0 +1,47 @@
+[
+  {"name": "Old Fashioned", "baseSpirit": "Bourbon", "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600", "ingredients": [
+    {"name": "Bourbon", "volume": "2 oz", "preferredBrand": "Blanton's"},
+    {"name": "Bitters", "volume": "2 dashes", "preferredBrand": "Angostura"},
+    {"name": "Sugar", "volume": "1 cube", "preferredBrand": "Demerara"},
+    {"name": "Orange Peel", "volume": "1", "preferredBrand": "Fresh"}
+  ]},
+  {"name": "Manhattan", "baseSpirit": "Rye", "image": "https://images.unsplash.com/photo-1582056615449-fdf22f7f0b08?w=600", "ingredients": [
+    {"name": "Rye", "volume": "2 oz", "preferredBrand": "Bulleit"},
+    {"name": "Sweet Vermouth", "volume": "1 oz", "preferredBrand": "Carpano"},
+    {"name": "Bitters", "volume": "2 dashes", "preferredBrand": "Angostura"},
+    {"name": "Cherry", "volume": "1", "preferredBrand": "Luxardo"}
+  ]},
+  {"name": "Whiskey Sour", "baseSpirit": "Bourbon", "image": "https://images.unsplash.com/photo-1595981234058-593c9a03f6b7?w=600", "ingredients": [
+    {"name": "Bourbon", "volume": "2 oz", "preferredBrand": "Blanton's"},
+    {"name": "Lemon Juice", "volume": "1 oz", "preferredBrand": "Fresh"},
+    {"name": "Sugar", "volume": "0.5 oz", "preferredBrand": "Simple Syrup"},
+    {"name": "Egg White", "volume": "1", "preferredBrand": "Organic"}
+  ]},
+  {"name": "Mule", "baseSpirit": "Whiskey", "image": "https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?w=600", "ingredients": [
+    {"name": "Whiskey", "volume": "2 oz", "preferredBrand": "Jack Daniel's"},
+    {"name": "Ginger Beer", "volume": "4 oz", "preferredBrand": "Fever-Tree"},
+    {"name": "Lime Juice", "volume": "0.5 oz", "preferredBrand": "Fresh"}
+  ]},
+  {"name": "Hot Toddy", "baseSpirit": "Bourbon", "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600", "ingredients": [
+    {"name": "Bourbon", "volume": "2 oz", "preferredBrand": "Blanton's"},
+    {"name": "Honey", "volume": "1 tbsp", "preferredBrand": "Local Raw"},
+    {"name": "Lemon Juice", "volume": "1 oz", "preferredBrand": "Fresh"},
+    {"name": "Hot Water", "volume": "4 oz", "preferredBrand": "Filtered"}
+  ]},
+  {"name": "Rusty Nail", "baseSpirit": "Scotch", "image": "https://images.unsplash.com/photo-1582056615449-fdf22f7f0b08?w=600", "ingredients": [
+    {"name": "Scotch", "volume": "1.5 oz", "preferredBrand": "Glenlivet 12"},
+    {"name": "Drambuie", "volume": "0.5 oz", "preferredBrand": "Drambuie"},
+    {"name": "Lemon Twist", "volume": "1", "preferredBrand": "Fresh"}
+  ]},
+  {"name": "Irish Coffee", "baseSpirit": "Irish Whiskey", "image": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600", "ingredients": [
+    {"name": "Irish Whiskey", "volume": "1.5 oz", "preferredBrand": "Jameson"},
+    {"name": "Coffee", "volume": "4 oz", "preferredBrand": "Fresh Brewed"},
+    {"name": "Brown Sugar", "volume": "1 tsp", "preferredBrand": "Demerara"},
+    {"name": "Heavy Cream", "volume": "1 oz", "preferredBrand": "Organic"}
+  ]},
+  {"name": "Jack and Coke", "baseSpirit": "Bourbon", "image": "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?w=600", "ingredients": [
+    {"name": "Bourbon", "volume": "2 oz", "preferredBrand": "Jack Daniel's"},
+    {"name": "Cola", "volume": "4 oz", "preferredBrand": "Coca-Cola"},
+    {"name": "Lime", "volume": "1 wedge", "preferredBrand": "Fresh"}
+  ]}
+]
