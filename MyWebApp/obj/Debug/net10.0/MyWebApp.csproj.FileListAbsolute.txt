@@ -30,3 +30,5 @@
 /home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/bin/Debug/net10.0/cocktails.json
 /home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/bin/Debug/net10.0/brands.json
 /home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/obj/Debug/net10.0/MyWebApp.sourcelink.json
+/home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/obj/Debug/net10.0/MyWebApp.RazorAssemblyInfo.cache
+/home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/obj/Debug/net10.0/MyWebApp.RazorAssemblyInfo.cs
