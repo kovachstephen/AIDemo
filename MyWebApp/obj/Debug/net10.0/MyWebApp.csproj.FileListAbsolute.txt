@@ -29,3 +29,4 @@
 /home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/bin/Debug/net10.0/data.json
 /home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/bin/Debug/net10.0/cocktails.json
 /home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/bin/Debug/net10.0/brands.json
+/home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/obj/Debug/net10.0/MyWebApp.sourcelink.json

@@ -18,6 +18,39 @@ var brandPath = Path.Combine(app.Environment.ContentRootPath, "brands.json");
 var brandData = File.ReadAllText(brandPath);
 
 app.MapGet("/", () => {
+    return Results.Text($@"<!DOCTYPE html>
+<html> 
+<head>
+    <title>Whiskey & Cocktails</title>
+    <link href=""https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"" rel=""stylesheet"">
+    <style>
+        .hero-section {{
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://www.goodfreephotos.com/united-states/kentucky/other-kentucky/barrels-of-whiskey-in-the-cellar-at-buffalo-trace-distillery-kentucky.jpg');
+            background-size: cover;
+            background-position: center;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }}
+    </style>
+</head>
+<body>
+    <div class=""hero-section text-center text-white"">
+        <div class=""container"">
+            <h1 class=""display-3 mb-4"">Welcome to Whiskey & Cocktails</h1>
+            <p class=""lead mb-5"">Explore our collection of fine whiskeys and discover delicious cocktail recipes</p>
+            <div class=""d-flex gap-3 justify-content-center"">
+                <a href=""/whiskeys"" class=""btn btn-lg btn-outline-light"">Whiskey Collection</a>
+                <a href=""/cocktails"" class=""btn btn-lg btn-primary"">View Cocktails</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>", "text/html");
+});
+
+app.MapGet("/whiskeys", () => {
     var whiskeys = JsonSerializer.Deserialize<List<WhiskeyDto>>(jsonData)
         .Select(d => CreateWhiskey(d.Type, d.Brand, d.MashBill)).ToList();
     
@@ -35,6 +68,7 @@ app.MapGet("/", () => {
     <div class=""container mt-4"">
         <h1 class=""mb-4"">Whiskey Collection</h1>
         <div class=""mb-3"">
+            <a href=""/"" class=""btn btn-outline-primary"">Back to Home</a>
             <a href=""/cocktails"" class=""btn btn-primary"">View Cocktails</a>
         </div>
         <input type=""text"" id=""search"" class=""form-control mb-3"" placeholder=""Search by type, brand, or mash bill..."" onkeyup=""filterTable()"">
@@ -83,8 +117,8 @@ app.MapGet("/cocktails", (string? spirit) => {
     <div class=""container mt-4"">
         <h1 class=""mb-4"">Cocktails</h1>
         <div class=""mb-3"">
-            <a href=""/"" class=""btn btn-outline-primary"">← Back to Whiskey Collection</a>
-            {(string.IsNullOrEmpty(spirit) ? "" : $"<a href=\"/cocktails\" class=\"btn btn-secondary\">← Show all cocktails</a>")}
+            <a href=""/"" class=""btn btn-outline-primary"">Back to Home</a>
+            {(string.IsNullOrEmpty(spirit) ? "" : $"<a href=\"/cocktails\" class=\"btn btn-secondary\">Show all cocktails</a>")}
         </div>
         <input type=""text"" id=""search"" class=""form-control mb-3"" placeholder=""Search..."" onkeyup=""filterTable()"">
         <table id=""cocktailTable"" class=""table table-striped table-hover"">
@@ -140,7 +174,7 @@ app.MapGet("/cocktail/{name}", (string name) => {
     <div class=""container mt-4"">
         <h1 class=""mb-4"">{cocktail?.Name ?? "Cocktail"}</h1>
         <div class=""mb-3"">
-            <a href=""/cocktails"" class=""btn btn-outline-primary"">← Back to Cocktails</a>
+            <a href=""/cocktails"" class=""btn btn-outline-primary"">Back to Cocktails</a>
         </div>
         {(cocktail != null ? $@"
         <div class=""row mb-4"">
@@ -183,7 +217,8 @@ app.MapGet("/brand", (string? b) => {
     <div class=""container mt-4"">
         <h1 class=""mb-4"">{brand?.Brand ?? "Brand"}</h1>
         <div class=""mb-3"">
-            <a href=""/"" class=""btn btn-outline-primary"">← Back to Whiskey Collection</a>
+            <a href=""/"" class=""btn btn-outline-primary"">Back to Home</a>
+            <a href=""/whiskeys"" class=""btn btn-secondary"">Whiskey Collection</a>
             <a href=""/cocktails"" class=""btn btn-primary"">View Cocktails</a>
         </div>
         {(brand != null ? $@"
