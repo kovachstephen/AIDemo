@@ -16,8 +16,17 @@
                 <a href="/cocktails" class="btn btn-secondary">Show all cocktails</a>
             }
         </div>
-        <input type="text" id="search" class="form-control mb-3" placeholder="Search..." onkeyup="filterTable()">
-        <table id="cocktailTable" class="table table-striped table-hover">
+        @if (Model.Cocktails.Count == 0 && !string.IsNullOrEmpty(Model.Spirit))
+        {
+            <div class="alert alert-warning">
+                <strong>No cocktails found for "@Model.Spirit".</strong>
+                <p class="mb-0">Try a different whiskey type like Bourbon, Rye, Scotch, or Irish Whiskey.</p>
+            </div>
+        }
+        @if (Model.Cocktails.Count > 0)
+        {
+            <input type="text" id="search" class="form-control mb-3" placeholder="Search..." onkeyup="filterTable()">
+            <table id="cocktailTable" class="table table-striped table-hover">
             <thead class="table-dark">
                 <tr><th>Name</th><th>Base Spirit</th></tr>
             </thead>
@@ -31,7 +40,10 @@
                 }
             </tbody>
         </table>
+        }
     </div>
+    @if (Model.Cocktails.Count > 0)
+    {
     <script>
         function filterTable() {
             var input = document.getElementById('search');
@@ -44,5 +56,6 @@
             }
         }
     </script>
+    }
 </body>
 </html>
