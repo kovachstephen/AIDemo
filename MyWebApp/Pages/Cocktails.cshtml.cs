@@ -1,22 +1,27 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Text.Json;
 using MyWebApp.Models;
+using MyWebApp.Services;
 
 namespace MyWebApp.Pages;
 
 public class CocktailsModel : PageModel
 {
+    private readonly IDataService _dataService;
+
     public List<CocktailDto> Cocktails { get; set; } = new();
     
     [BindProperty(SupportsGet = true)]
     public string? Spirit { get; set; }
 
+    public CocktailsModel(IDataService dataService)
+    {
+        _dataService = dataService;
+    }
+
     public void OnGet()
     {
-        var cocktailPath = Path.Combine(Directory.GetCurrentDirectory(), "cocktails.json");
-        var cocktailData = System.IO.File.ReadAllText(cocktailPath);
-        var allCocktails = JsonSerializer.Deserialize<List<CocktailDto>>(cocktailData) ?? new List<CocktailDto>();
+        var allCocktails = _dataService.GetAllCocktails();
         
         if (string.IsNullOrEmpty(Spirit))
         {
@@ -24,7 +29,8 @@ public class CocktailsModel : PageModel
         }
         else
         {
-            Cocktails = allCocktails.Where(c => c.BaseSpirit?.ToLower() == Spirit.ToLower()).ToList();
+            Cocktails = allCocktails.Where(c => 
+                c.BaseSpirit?.ToLower() == Spirit.ToLower()).ToList();
         }
     }
 }

@@ -1,18 +1,23 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using System.Text.Json;
 using MyWebApp.Models;
+using MyWebApp.Services;
 
 namespace MyWebApp.Pages;
 
 public class WhiskeysModel : PageModel
 {
+    private readonly IDataService _dataService;
+
     public List<WhiskeyDto> Whiskeys { get; set; } = new();
+
+    public WhiskeysModel(IDataService dataService)
+    {
+        _dataService = dataService;
+    }
 
     public void OnGet()
     {
-        var jsonPath = Path.Combine(Directory.GetCurrentDirectory(), "data.json");
-        var jsonData = System.IO.File.ReadAllText(jsonPath);
-        Whiskeys = JsonSerializer.Deserialize<List<WhiskeyDto>>(jsonData) ?? new List<WhiskeyDto>();
+        Whiskeys = _dataService.GetAllWhiskeys();
     }
 }
