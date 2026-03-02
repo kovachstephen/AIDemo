@@ -34,7 +34,7 @@
             <h3>Recipe</h3>
             <div class="card">
                 <div class="card-body">
-                    <p class="lead">@Model.Recipe</p>
+                    <p class="lead">@(Model.Cocktail?.Recipe ?? "Mix ingredients according to taste preferences.")</p>
                 </div>
             </div>
         }

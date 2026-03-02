@@ -30,6 +30,8 @@ public class CocktailDto
     public string? BaseSpirit { get; set; }
     [JsonPropertyName("image")]
     public string? Image { get; set; }
+    [JsonPropertyName("recipe")]
+    public string? Recipe { get; set; }
     [JsonPropertyName("ingredients")]
     public List<Ingredient>? Ingredients { get; set; }
 }
