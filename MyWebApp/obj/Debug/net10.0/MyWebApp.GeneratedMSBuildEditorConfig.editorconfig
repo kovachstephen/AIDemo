@@ -38,10 +38,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/Pages/WhiskeyEdit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvV2hpc2tleUVkaXQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/Pages/Whiskeys.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvV2hpc2tleXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/Pages/_Layout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX0xheW91dC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdJbXBvcnRzLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/Pages/_ViewStart.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

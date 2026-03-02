@@ -20,4 +20,10 @@ public class WhiskeysModel : PageModel
     {
         Whiskeys = _whiskeyService.GetAllWhiskeys();
     }
+
+    public IActionResult OnPostDelete(string brand)
+    {
+        _whiskeyService.DeleteWhiskey(brand);
+        return RedirectToPage();
+    }
 }

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"]</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-dark-brown: #1a1410;
+            --color-medium-brown: #3d2b1f;
+            --color-cognac: #8b4513;
+            --color-gold: #c9a227;
+            --color-cream: #f5f0e6;
+            --color-charcoal: #2c2c2c;
+            --color-deep-red: #722f37;
+            --color-leather: #654321;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--color-dark-brown);
+            color: var(--color-cream);
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-gold);
+            font-weight: 600;
+        }
+
+        .btn-primary {
+            background-color: var(--color-cognac);
+            border-color: var(--color-cognac);
+            color: var(--color-cream);
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            padding: 0.6rem 1.5rem;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-gold);
+            border-color: var(--color-gold);
+            color: var(--color-dark-brown);
+        }
+
+        .btn-secondary {
+            background-color: var(--color-charcoal);
+            border-color: var(--color-charcoal);
+            color: var(--color-cream);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--color-medium-brown);
+            border-color: var(--color-medium-brown);
+            color: var(--color-gold);
+        }
+
+        .btn-outline-primary {
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .btn-outline-primary:hover {
+            background-color: var(--color-gold);
+            border-color: var(--color-gold);
+            color: var(--color-dark-brown);
+        }
+
+        .btn-success {
+            background-color: var(--color-gold);
+            border-color: var(--color-gold);
+            color: var(--color-dark-brown);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .btn-success:hover {
+            background-color: #b8942a;
+            border-color: #b8942a;
+        }
+
+        .btn-warning {
+            background-color: var(--color-cognac);
+            border-color: var(--color-cognac);
+            color: var(--color-cream);
+        }
+
+        .btn-warning:hover {
+            background-color: var(--color-gold);
+            border-color: var(--color-gold);
+            color: var(--color-dark-brown);
+        }
+
+        .btn-outline-secondary {
+            border-color: var(--color-gold);
+            color: var(--color-gold);
+        }
+
+        .btn-outline-secondary:hover {
+            background-color: var(--color-gold);
+            color: var(--color-dark-brown);
+        }
+
+        .btn-outline-danger {
+            border-color: var(--color-deep-red);
+            color: var(--color-deep-red);
+        }
+
+        .btn-outline-danger:hover {
+            background-color: var(--color-deep-red);
+            border-color: var(--color-deep-red);
+            color: var(--color-cream);
+        }
+
+        .btn-sm {
+            padding: 0.3rem 0.8rem;
+            font-size: 0.8rem;
+        }
+
+        .btn-lg {
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+        }
+
+        .table {
+            background-color: var(--color-medium-brown);
+            color: var(--color-cream);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .table thead {
+            background-color: var(--color-charcoal);
+            color: var(--color-gold);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .table tbody tr {
+            border-bottom: 1px solid var(--color-charcoal);
+        }
+
+        .table tbody tr:hover {
+            background-color: var(--color-charcoal);
+        }
+
+        .table a.btn-link {
+            color: var(--color-gold);
+            text-decoration: none;
+        }
+
+        .table a.btn-link:hover {
+            color: var(--color-cream);
+            text-decoration: underline;
+        }
+
+        .card {
+            background-color: var(--color-medium-brown);
+            border: 1px solid var(--color-cognac);
+            color: var(--color-cream);
+        }
+
+        .card-body {
+            color: var(--color-cream);
+        }
+
+        .form-control {
+            background-color: var(--color-charcoal);
+            border: 1px solid var(--color-cognac);
+            color: var(--color-cream);
+        }
+
+        .form-control:focus {
+            background-color: var(--color-charcoal);
+            border-color: var(--color-gold);
+            color: var(--color-cream);
+            box-shadow: 0 0 0 0.2rem rgba(201, 162, 39, 0.25);
+        }
+
+        .form-control::placeholder {
+            color: #999;
+        }
+
+        .form-label {
+            color: var(--color-gold);
+            font-family: 'Playfair Display', serif;
+            font-weight: 500;
+        }
+
+        .form-select {
+            background-color: var(--color-charcoal);
+            border: 1px solid var(--color-cognac);
+            color: var(--color-cream);
+        }
+
+        .form-select:focus {
+            border-color: var(--color-gold);
+            box-shadow: 0 0 0 0.2rem rgba(201, 162, 39, 0.25);
+        }
+
+        textarea.form-control {
+            background-color: var(--color-charcoal);
+            border: 1px solid var(--color-cognac);
+            color: var(--color-cream);
+        }
+
+        .modal-content {
+            background-color: var(--color-medium-brown);
+            border: 1px solid var(--color-cognac);
+            color: var(--color-cream);
+        }
+
+        .modal-header {
+            border-bottom: 1px solid var(--color-cognac);
+        }
+
+        .modal-footer {
+            border-top: 1px solid var(--color-cognac);
+        }
+
+        .modal-title {
+            color: var(--color-gold);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .btn-close {
+            filter: invert(1);
+        }
+
+        .alert-info {
+            background-color: var(--color-charcoal);
+            border-color: var(--color-cognac);
+            color: var(--color-cream);
+        }
+
+        .alert-warning {
+            background-color: var(--color-cognac);
+            border-color: var(--color-gold);
+            color: var(--color-cream);
+        }
+
+        .text-danger {
+            color: var(--color-deep-red) !important;
+        }
+
+        .input-group-text {
+            background-color: var(--color-charcoal);
+            border: 1px solid var(--color-cognac);
+            color: var(--color-gold);
+        }
+
+        iframe {
+            border: 2px solid var(--color-cognac) !important;
+            border-radius: 8px;
+        }
+
+        .lead {
+            color: var(--color-cream);
+            font-weight: 300;
+        }
+
+        .display-3 {
+            font-family: 'Playfair Display', serif;
+            color: var(--color-gold);
+            font-weight: 700;
+        }
+
+        th {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+        }
+
+        strong {
+            color: var(--color-gold);
+        }
+
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--color-dark-brown);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--color-cognac);
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--color-gold);
+        }
+    </style>
+</head>
+<body>
+    @RenderBody()
+</body>
+</html>

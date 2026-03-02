@@ -10,6 +10,10 @@ public class WhiskeyDto
     public string? Brand { get; set; }
     [JsonPropertyName("mashBill")]
     public string? MashBill { get; set; }
+    [JsonPropertyName("image")]
+    public string? Image { get; set; }
+    [JsonPropertyName("isDeleted")]
+    public bool IsDeleted { get; set; }
 }
 
 public class Ingredient
@@ -52,4 +56,6 @@ public class BrandDto
     public string? Image { get; set; }
     [JsonPropertyName("mapUrl")]
     public string? MapUrl { get; set; }
+    [JsonPropertyName("isDeleted")]
+    public bool IsDeleted { get; set; }
 }

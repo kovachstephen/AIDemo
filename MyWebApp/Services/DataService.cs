@@ -5,6 +5,9 @@ namespace MyWebApp.Services;
 public interface IWhiskeyService
 {
     List<WhiskeyDto> GetAllWhiskeys();
+    WhiskeyDto? GetWhiskeyByBrand(string brand);
+    void SaveWhiskey(WhiskeyDto whiskey);
+    void DeleteWhiskey(string brand);
 }
 
 public interface ICocktailService
@@ -17,6 +20,7 @@ public interface IBrandService
 {
     List<BrandDto> GetAllBrands();
     BrandDto? GetBrandByKey(string key);
+    void SaveBrand(BrandDto brand);
 }
 
 public class DataService : IWhiskeyService, ICocktailService, IBrandService
@@ -37,7 +41,22 @@ public class DataService : IWhiskeyService, ICocktailService, IBrandService
 
     public List<WhiskeyDto> GetAllWhiskeys()
     {
-        return _whiskeyDataSource.GetWhiskeys();
+        return _whiskeyDataSource.GetActiveWhiskeys();
+    }
+
+    public WhiskeyDto? GetWhiskeyByBrand(string brand)
+    {
+        return _whiskeyDataSource.GetWhiskeyByBrand(brand);
+    }
+
+    public void SaveWhiskey(WhiskeyDto whiskey)
+    {
+        _whiskeyDataSource.SaveWhiskey(whiskey);
+    }
+
+    public void DeleteWhiskey(string brand)
+    {
+        _whiskeyDataSource.DeleteWhiskey(brand);
     }
 
     public List<CocktailDto> GetAllCocktails()
@@ -47,7 +66,7 @@ public class DataService : IWhiskeyService, ICocktailService, IBrandService
 
     public List<BrandDto> GetAllBrands()
     {
-        return _brandDataSource.GetBrands();
+        return _brandDataSource.GetActiveBrands();
     }
 
     public CocktailDto? GetCocktailByName(string name)
@@ -61,5 +80,10 @@ public class DataService : IWhiskeyService, ICocktailService, IBrandService
         var brandKey = key.Replace("-", " ").ToLower().Replace("'", "");
         return GetAllBrands().FirstOrDefault(x => 
             x.Brand?.ToLower().Replace("'", "") == brandKey);
+    }
+
+    public void SaveBrand(BrandDto brand)
+    {
+        _brandDataSource.SaveBrand(brand);
     }
 }

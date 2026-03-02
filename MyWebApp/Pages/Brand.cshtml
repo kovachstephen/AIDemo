@@ -1,27 +1,74 @@
 @page "/brand"
 @model BrandModel
-<!DOCTYPE html>
-<html> 
-<head>
-    <title>@Model.Brand?.Brand - Details</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container mt-4">
-        <h1 class="mb-4">@Model.Brand?.Brand</h1>
-        <div class="mb-3">
-            <a href="/" class="btn btn-outline-primary">Back to Home</a>
-            <a href="/whiskeys" class="btn btn-secondary">Whiskey Collection</a>
-            <a href="/cocktails" class="btn btn-primary">View Cocktails</a>
-        </div>
-        @if (Model.Brand != null)
+@{
+    ViewData["Title"] = Model.Brand?.Brand ?? "Add Brand";
+}
+
+<div class="container mt-5">
+    <h1 class="mb-4 text-center">@Model.Brand?.Brand</h1>
+    <div class="mb-4 d-flex flex-wrap gap-2">
+        <a href="/" class="btn btn-outline-primary">Back to Home</a>
+        <a href="/whiskeys" class="btn btn-secondary">Whiskey Collection</a>
+        <a href="/cocktails" class="btn btn-primary">View Cocktails</a>
+        @if (Model.Brand != null && !Model.IsEditing)
         {
-            <div class="row mb-4">
-                <div class="col-md-6">
-                    <img src="@Model.Brand.Image" class="img-fluid rounded" alt="@Model.Brand.Brand">
+            <a href="/brand?b=@Model.BrandKey&edit=true" class="btn btn-warning">Edit Brand</a>
+        }
+    </div>
+    
+    @if (Model.IsEditing || Model.Brand == null)
+    {
+        <form method="post">
+            <input type="hidden" name="Brand" value="@Model.BrandKey">
+            <div class="row">
+                <div class="col-md-6 mx-auto">
+                    <div class="mb-3">
+                        <label for="distillery" class="form-label">Distillery</label>
+                        <input type="text" id="distillery" name="Distillery" class="form-control" 
+                               value="@Model.Brand?.Distillery" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location</label>
+                        <input type="text" id="location" name="Location" class="form-control" 
+                               value="@Model.Brand?.Location" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="founded" class="form-label">Founded Year</label>
+                        <input type="number" id="founded" name="Founded" class="form-control" 
+                               value="@Model.Brand?.Founded" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description</label>
+                        <textarea id="description" name="Description" class="form-control" rows="3">@Model.Brand?.Description</textarea>
+                    </div>
+                    <div class="mb-3">
+                        <label for="image" class="form-label">Image URL</label>
+                        <input type="url" id="image" name="Image" class="form-control" 
+                               value="@Model.Brand?.Image" placeholder="https://...">
+                    </div>
+                    <div class="mb-3">
+                        <label for="mapUrl" class="form-label">Map URL</label>
+                        <input type="url" id="mapUrl" name="MapUrl" class="form-control" 
+                               value="@Model.Brand?.MapUrl" placeholder="https://...">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Save Brand Details</button>
+                    @if (Model.Brand != null)
+                    {
+                        <a href="/brand?b=@Model.BrandKey" class="btn btn-secondary">Cancel</a>
+                    }
                 </div>
             </div>
-            <table class="table table-striped mb-4">
+        </form>
+    }
+    else
+    {
+        <div class="row mb-4">
+            <div class="col-md-6 mx-auto">
+                <img src="@Model.Brand.Image" class="img-fluid rounded" alt="@Model.Brand.Brand" style="border: 3px solid var(--color-cognac);">
+            </div>
+        </div>
+        <div class="table-responsive mb-4" style="max-width: 800px; margin: 0 auto;">
+            <table class="table table-striped">
                 <tbody>
                     <tr><th>Distillery</th><td>@Model.Brand.Distillery</td></tr>
                     <tr><th>Location</th><td>@Model.Brand.Location</td></tr>
@@ -29,13 +76,10 @@
                     <tr><th>Description</th><td>@Model.Brand.Description</td></tr>
                 </tbody>
             </table>
-            <h3>Location</h3>
-            <iframe src="@Model.Brand.MapUrl" width="100%" height="400" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-        }
-        else
-        {
-            <p>Brand not found.</p>
-        }
-    </div>
-</body>
-</html>
+        </div>
+        <h3 class="text-center mb-3">Location</h3>
+        <div style="max-width: 800px; margin: 0 auto;">
+            <iframe src="@Model.Brand.MapUrl" width="100%" height="400" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    }
+</div>
