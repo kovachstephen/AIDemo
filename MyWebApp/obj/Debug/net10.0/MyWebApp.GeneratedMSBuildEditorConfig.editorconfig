@@ -38,6 +38,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/Pages/Login.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9naW4uY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/Pages/Logout.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTG9nb3V0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/kovachstephen/Sandbox/OpenCodeDemo/MyWebApp/Pages/WhiskeyEdit.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvV2hpc2tleUVkaXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

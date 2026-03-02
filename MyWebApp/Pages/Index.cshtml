@@ -1,4 +1,5 @@
 @page "/"
+@model IndexModel
 @{
     ViewData["Title"] = "Whiskey & Cocktails";
 }
@@ -36,9 +37,24 @@
         transform: translateY(-2px);
         box-shadow: 0 4px 15px rgba(201, 162, 39, 0.3);
     }
+
+    .auth-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+    }
 </style>
 
-<div class="hero-section text-center">
+<div class="hero-section text-center" style="position: relative;">
+    @if (Model.IsLoggedIn)
+    {
+        <a href="/logout" class="btn btn-outline-primary auth-btn">Logout (@Model.Username)</a>
+    }
+    else
+    {
+        <a href="/login" class="btn btn-outline-primary auth-btn">Login</a>
+    }
+    
     <div class="container">
         <h1 class="display-3 mb-4">The Grand Whiskey Lounge</h1>
         <p class="lead mb-5">Discover exceptional whiskeys & craft the perfect cocktail</p>

@@ -5,12 +5,22 @@
 }
 
 <div class="container mt-5">
-    <h1 class="mb-4 text-center">@Model.Brand?.Brand</h1>
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h1 class="mb-0">@Model.Brand?.Brand</h1>
+        @if (Model.IsLoggedIn)
+        {
+            <a href="/logout" class="btn btn-outline-primary">Logout</a>
+        }
+        else
+        {
+            <a href="/login" class="btn btn-outline-primary">Login</a>
+        }
+    </div>
     <div class="mb-4 d-flex flex-wrap gap-2">
         <a href="/" class="btn btn-outline-primary">Back to Home</a>
         <a href="/whiskeys" class="btn btn-secondary">Whiskey Collection</a>
         <a href="/cocktails" class="btn btn-primary">View Cocktails</a>
-        @if (Model.Brand != null && !Model.IsEditing)
+        @if (Model.Brand != null && !Model.IsEditing && Model.IsLoggedIn)
         {
             <a href="/brand?b=@Model.BrandKey&edit=true" class="btn btn-warning">Edit Brand</a>
         }
@@ -18,7 +28,16 @@
     
     @if (Model.IsEditing || Model.Brand == null)
     {
-        <form method="post">
+        @if (!Model.IsLoggedIn && Model.Brand == null)
+        {
+            <div class="alert alert-info">
+                <strong>No details found for this brand.</strong>
+                <p class="mb-0">Please <a href="/login">login</a> to add brand details.</p>
+            </div>
+        }
+        else
+        {
+            <form method="post">
             <input type="hidden" name="Brand" value="@Model.BrandKey">
             <div class="row">
                 <div class="col-md-6 mx-auto">
@@ -59,6 +78,7 @@
                 </div>
             </div>
         </form>
+        }
     }
     else
     {

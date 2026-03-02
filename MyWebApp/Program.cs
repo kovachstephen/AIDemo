@@ -13,6 +13,8 @@ builder.Services.AddSingleton<IBrandService, DataService>();
 
 builder.Services.AddSingleton<IRecipeService, RecipeService>();
 
+builder.Services.AddSingleton<IAuthService, AuthService>();
+
 builder.WebHost.UseUrls("http://localhost:8080");
 
 var app = builder.Build();

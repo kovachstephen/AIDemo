@@ -8,12 +8,15 @@ namespace MyWebApp.Pages;
 public class WhiskeysModel : PageModel
 {
     private readonly IWhiskeyService _whiskeyService;
+    private readonly IAuthService _authService;
 
     public List<WhiskeyDto> Whiskeys { get; set; } = new();
+    public bool IsLoggedIn => _authService.IsLoggedIn;
 
-    public WhiskeysModel(IWhiskeyService whiskeyService)
+    public WhiskeysModel(IWhiskeyService whiskeyService, IAuthService authService)
     {
         _whiskeyService = whiskeyService;
+        _authService = authService;
     }
 
     public void OnGet()
@@ -23,6 +26,10 @@ public class WhiskeysModel : PageModel
 
     public IActionResult OnPostDelete(string brand)
     {
+        if (!_authService.IsLoggedIn)
+        {
+            return RedirectToPage("/Login");
+        }
         _whiskeyService.DeleteWhiskey(brand);
         return RedirectToPage();
     }
