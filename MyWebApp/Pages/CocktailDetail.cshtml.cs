@@ -7,20 +7,20 @@ namespace MyWebApp.Pages;
 
 public class CocktailDetailModel : PageModel
 {
-    private readonly IDataService _dataService;
+    private readonly ICocktailService _cocktailService;
 
     public CocktailDto? Cocktail { get; set; }
     
     [BindProperty(SupportsGet = true)]
     public string? Name { get; set; }
 
-    public CocktailDetailModel(IDataService dataService)
+    public CocktailDetailModel(ICocktailService cocktailService)
     {
-        _dataService = dataService;
+        _cocktailService = cocktailService;
     }
 
     public void OnGet()
     {
-        Cocktail = _dataService.GetCocktailByName(Name ?? "");
+        Cocktail = _cocktailService.GetCocktailByName(Name ?? "");
     }
 }

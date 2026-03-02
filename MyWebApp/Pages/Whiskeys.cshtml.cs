@@ -7,17 +7,17 @@ namespace MyWebApp.Pages;
 
 public class WhiskeysModel : PageModel
 {
-    private readonly IDataService _dataService;
+    private readonly IWhiskeyService _whiskeyService;
 
     public List<WhiskeyDto> Whiskeys { get; set; } = new();
 
-    public WhiskeysModel(IDataService dataService)
+    public WhiskeysModel(IWhiskeyService whiskeyService)
     {
-        _dataService = dataService;
+        _whiskeyService = whiskeyService;
     }
 
     public void OnGet()
     {
-        Whiskeys = _dataService.GetAllWhiskeys();
+        Whiskeys = _whiskeyService.GetAllWhiskeys();
     }
 }

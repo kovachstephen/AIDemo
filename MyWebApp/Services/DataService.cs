@@ -2,37 +2,52 @@ using MyWebApp.Models;
 
 namespace MyWebApp.Services;
 
-public interface IDataService
+public interface IWhiskeyService
 {
     List<WhiskeyDto> GetAllWhiskeys();
+}
+
+public interface ICocktailService
+{
     List<CocktailDto> GetAllCocktails();
-    List<BrandDto> GetAllBrands();
     CocktailDto? GetCocktailByName(string name);
+}
+
+public interface IBrandService
+{
+    List<BrandDto> GetAllBrands();
     BrandDto? GetBrandByKey(string key);
 }
 
-public class DataService : IDataService
+public class DataService : IWhiskeyService, ICocktailService, IBrandService
 {
-    private readonly IDataSource _dataSource;
+    private readonly IWhiskeyDataSource _whiskeyDataSource;
+    private readonly ICocktailDataSource _cocktailDataSource;
+    private readonly IBrandDataSource _brandDataSource;
 
-    public DataService(IDataSource dataSource)
+    public DataService(
+        IWhiskeyDataSource whiskeyDataSource,
+        ICocktailDataSource cocktailDataSource,
+        IBrandDataSource brandDataSource)
     {
-        _dataSource = dataSource;
+        _whiskeyDataSource = whiskeyDataSource;
+        _cocktailDataSource = cocktailDataSource;
+        _brandDataSource = brandDataSource;
     }
 
     public List<WhiskeyDto> GetAllWhiskeys()
     {
-        return _dataSource.GetWhiskeys();
+        return _whiskeyDataSource.GetWhiskeys();
     }
 
     public List<CocktailDto> GetAllCocktails()
     {
-        return _dataSource.GetCocktails();
+        return _cocktailDataSource.GetCocktails();
     }
 
     public List<BrandDto> GetAllBrands()
     {
-        return _dataSource.GetBrands();
+        return _brandDataSource.GetBrands();
     }
 
     public CocktailDto? GetCocktailByName(string name)

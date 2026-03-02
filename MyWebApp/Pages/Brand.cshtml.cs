@@ -7,20 +7,20 @@ namespace MyWebApp.Pages;
 
 public class BrandModel : PageModel
 {
-    private readonly IDataService _dataService;
+    private readonly IBrandService _brandService;
 
     public BrandDto? Brand { get; set; }
     
     [BindProperty(SupportsGet = true)]
     public string? B { get; set; }
 
-    public BrandModel(IDataService dataService)
+    public BrandModel(IBrandService brandService)
     {
-        _dataService = dataService;
+        _brandService = brandService;
     }
 
     public void OnGet()
     {
-        Brand = _dataService.GetBrandByKey(B ?? "");
+        Brand = _brandService.GetBrandByKey(B ?? "");
     }
 }

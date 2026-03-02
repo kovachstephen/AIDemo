@@ -3,7 +3,7 @@ using MyWebApp.Models;
 
 namespace MyWebApp.Services;
 
-public class JsonDataSource : IDataSource
+public class JsonDataSource : IWhiskeyDataSource, ICocktailDataSource, IBrandDataSource
 {
     private readonly string _contentRoot;
     private List<WhiskeyDto>? _whiskeys;

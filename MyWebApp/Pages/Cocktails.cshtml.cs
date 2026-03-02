@@ -7,21 +7,21 @@ namespace MyWebApp.Pages;
 
 public class CocktailsModel : PageModel
 {
-    private readonly IDataService _dataService;
+    private readonly ICocktailService _cocktailService;
 
     public List<CocktailDto> Cocktails { get; set; } = new();
     
     [BindProperty(SupportsGet = true)]
     public string? Spirit { get; set; }
 
-    public CocktailsModel(IDataService dataService)
+    public CocktailsModel(ICocktailService cocktailService)
     {
-        _dataService = dataService;
+        _cocktailService = cocktailService;
     }
 
     public void OnGet()
     {
-        var allCocktails = _dataService.GetAllCocktails();
+        var allCocktails = _cocktailService.GetAllCocktails();
         
         if (string.IsNullOrEmpty(Spirit))
         {

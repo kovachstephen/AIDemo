@@ -7,16 +7,16 @@ public interface IRecipeService
 
 public class RecipeService : IRecipeService
 {
-    private readonly IDataService _dataService;
+    private readonly ICocktailService _cocktailService;
 
-    public RecipeService(IDataService dataService)
+    public RecipeService(ICocktailService cocktailService)
     {
-        _dataService = dataService;
+        _cocktailService = cocktailService;
     }
 
     public string GetRecipe(string cocktailName)
     {
-        var cocktail = _dataService.GetCocktailByName(cocktailName);
+        var cocktail = _cocktailService.GetCocktailByName(cocktailName);
         return cocktail?.Recipe ?? "Mix ingredients according to taste preferences.";
     }
 }
