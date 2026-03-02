@@ -2,6 +2,7 @@ using MyWebApp.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
+builder.Services.AddSingleton<IDataSource, JsonDataSource>();
 builder.Services.AddSingleton<IDataService, DataService>();
 builder.Services.AddSingleton<IRecipeService, RecipeService>();
 builder.WebHost.UseUrls("http://localhost:8080");

@@ -1,4 +1,3 @@
-using System.Text.Json;
 using MyWebApp.Models;
 
 namespace MyWebApp.Services;
@@ -14,32 +13,26 @@ public interface IDataService
 
 public class DataService : IDataService
 {
-    private readonly string _contentRoot;
-    private List<WhiskeyDto>? _whiskeys;
-    private List<CocktailDto>? _cocktails;
-    private List<BrandDto>? _brands;
+    private readonly IDataSource _dataSource;
 
-    public DataService(IWebHostEnvironment environment)
+    public DataService(IDataSource dataSource)
     {
-        _contentRoot = environment.ContentRootPath;
+        _dataSource = dataSource;
     }
 
     public List<WhiskeyDto> GetAllWhiskeys()
     {
-        _whiskeys ??= LoadJson<List<WhiskeyDto>>("data.json") ?? new List<WhiskeyDto>();
-        return _whiskeys;
+        return _dataSource.GetWhiskeys();
     }
 
     public List<CocktailDto> GetAllCocktails()
     {
-        _cocktails ??= LoadJson<List<CocktailDto>>("cocktails.json") ?? new List<CocktailDto>();
-        return _cocktails;
+        return _dataSource.GetCocktails();
     }
 
     public List<BrandDto> GetAllBrands()
     {
-        _brands ??= LoadJson<List<BrandDto>>("brands.json") ?? new List<BrandDto>();
-        return _brands;
+        return _dataSource.GetBrands();
     }
 
     public CocktailDto? GetCocktailByName(string name)
@@ -53,12 +46,5 @@ public class DataService : IDataService
         var brandKey = key.Replace("-", " ").ToLower().Replace("'", "");
         return GetAllBrands().FirstOrDefault(x => 
             x.Brand?.ToLower().Replace("'", "") == brandKey);
-    }
-
-    private T? LoadJson<T>(string fileName) where T : class
-    {
-        var path = Path.Combine(_contentRoot, fileName);
-        var json = System.IO.File.ReadAllText(path);
-        return JsonSerializer.Deserialize<T>(json);
     }
 }
